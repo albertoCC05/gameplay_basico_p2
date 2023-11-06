@@ -17,6 +17,9 @@ public class DestroyFood : MonoBehaviour
         if (transform.position.z < botoomBound) 
         {
             Destroy(gameObject);
+            Debug.Log("GAME OVER");
+
+            Time.timeScale = 0;
         }
     }
 }
