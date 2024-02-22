@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerLv2 : MonoBehaviour
 {
     //variables 
     [SerializeField] private float speed = 10f;
@@ -29,7 +29,9 @@ public class PlayerController : MonoBehaviour
 
     private void ShootFood()
     {
-        Instantiate(FoodPrefab, transform.position, Quaternion.identity);
+        Instantiate(FoodPrefab, transform.position + new Vector3(1,0,0), Quaternion.Euler(0, 30, 0));
+        Instantiate(FoodPrefab, transform.position + new Vector3(-1, 0, 0), Quaternion.Euler(0, -30, 0));
+
     }
 
     //update_start

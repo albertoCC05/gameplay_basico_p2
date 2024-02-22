@@ -1,18 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     //GameVariables
-
+    private int score = 0;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject PausePanel;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI totalScore;
+
+   
 
 
 
     //GameFunctions
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+    public void LoadGame()
+    {
+        Time.timeScale = 1;
+    }
+    public void updateScore()
+    {
+        score++;
+        scoreText.text = $"Score: {score}";
+    }
 
     public void HideGameOverPanel()
     {
@@ -30,6 +52,10 @@ public class UIManager : MonoBehaviour
     {
         PausePanel.SetActive(true);
     }
+    public void TotalScoreTextUpdate()
+    {
+        totalScore.text = $"Total Score {score}";
+    }
 
 
 
@@ -46,6 +72,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        
         HideGameOverPanel();
         HidePausePanel();
     }
